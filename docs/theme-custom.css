@@ -28,7 +28,7 @@
 .markdown-section th {padding:0.5rem;background-color:var(--mono-tint1)}
 .markdown-section th:not([align]) {text-align:center}
 .markdown-section td {padding:0.7rem 1.2rem}
-.markdown-section p code {white-space:normal}
+.markdown-section p code {white-space:normal !important}
 @media screen and (max-width:480px) {
 	:root {
 		--modular-scale: 1.1;
