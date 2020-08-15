@@ -13,7 +13,8 @@
 	--sidebar-nav-link-before-content-l1: '😊';
 	--sidebar-nav-indent: 0.5rem;
 }
-.markdown-section {padding:4rem 45px 2.5rem}
+.markdown-section {padding:4rem 30px 2.5rem}
+.sidebar .sidebar-nav {padding-bottom:35px}
 .sidebar>h1 .app-name-link {font-weight:bold}
 .sidebar-nav>ul>li>ul>li>ul>li>a:before {display:none}
 .sidebar-nav>ul>li>a,
@@ -26,3 +27,17 @@
 .markdown-section th {padding:0.5rem;background-color:var(--mono-tint1)}
 .markdown-section th:not([align]) {text-align:center}
 .markdown-section td {padding:0.7rem 1.2rem}
+.markdown-section p code {white-space:normal}
+@media screen and (max-width:480px) {
+	:root {
+		--modular-scale: 1.1;
+		--base-font-size: 14px;
+		--code-block-padding: 10px;
+	}
+	.markdown-section {padding:4rem 15px 2.5rem}
+	.markdown-section td {text-align:left}
+	.sidebar-nav>ul>li>a,
+	.sidebar-nav>ul>li>ul>li>a {font-size:13.5px}
+	.sidebar-nav>ul>li>ul>li>ul>li>a {font-size:12.5px}
+	.sidebar .search .matching-post, .sidebar .search .matching-post h2 {font-size:13px !important}
+}
