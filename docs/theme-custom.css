@@ -1,0 +1,28 @@
+:root {
+	--mono-hue: 208;
+	--mono-saturation: 20%;
+	--theme-color: #60fcf1;
+	--modular-scale: 1.2;
+	--font-size-xxl: var(--modular-scale-5);
+	--font-size-xl: var(--modular-scale-3);
+	--heading-h1-font-weight: bold;
+	--heading-h2-font-weight: bold;
+	--heading-h2-margin: 2rem 0 1rem;
+	--heading-h2-padding: 10px 0 8px;
+	--sidebar-width: 18rem;
+	--sidebar-nav-link-before-content-l1: '😊';
+	--sidebar-nav-indent: 0.5rem;
+}
+.markdown-section {padding:4rem 45px 2.5rem}
+.sidebar>h1 .app-name-link {font-weight:bold}
+.sidebar-nav>ul>li>ul>li>ul>li>a:before {display:none}
+.sidebar-nav>ul>li>a,
+.sidebar-nav>ul>li>ul>li>a {font-size:15px}
+.sidebar-nav>ul>li>ul>li>ul>li>a {padding-left:1rem !important;padding-right:2.2rem !important;font-size:13px}
+.sidebar-nav>ul>li>ul>li>ul {margin-bottom:0.7rem;padding:0.5rem 0 0.4rem;background-color:var(--mono-tint1)}
+.sidebar .search .matching-post, .sidebar .search .matching-post h2 {font-size:14px !important}
+.sidebar .search input:focus {box-shadow:none;color:var(--theme-color);background-color:#1d242b !important}
+.markdown-section blockquote {padding:1rem 1.4rem}
+.markdown-section th {padding:0.5rem;background-color:var(--mono-tint1)}
+.markdown-section th:not([align]) {text-align:center}
+.markdown-section td {padding:0.7rem 1.2rem}
