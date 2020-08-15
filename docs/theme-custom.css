@@ -14,6 +14,7 @@
 	--sidebar-nav-indent: 0.5rem;
 }
 .markdown-section {padding:4rem 30px 2.5rem}
+.sidebar {height:100% !important}
 .sidebar .sidebar-nav {padding-bottom:35px}
 .sidebar>h1 .app-name-link {font-weight:bold}
 .sidebar-nav>ul>li>ul>li>ul>li>a:before {display:none}

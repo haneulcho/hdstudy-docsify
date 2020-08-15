@@ -17,7 +17,7 @@ API 관련 상수에 대한 API 안내입니다.
 | 335544325 | oidBoard_Freeboard | 자유 게시판 |
 | 671088645 | oidBoard_Propose | 제안 게시판 |
 | 1409286155 | oidBoard_Trade | 거래 게시판 |
-| 805306373 | oidBoard_BugReport | 버그레포트 |
+| 805306373 | oidBoard_BugReport | 버그 리포트 |
 | 2046820374 | oidBoard_Events | 이벤트 게시판 |
 | 469762053 | oidBoard_ScreenShot | 스크린샷 게시판 |
 | 536870917 | oidBoard_Movie | 동영상 게시판 |
