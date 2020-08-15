@@ -14,22 +14,30 @@ BoardContents.vue 파일과 BoardComments.vue 파일이 있습니다. 이 두 �
 ## 2. 상태를 가져올 때 state 대신 getters 사용하기
 공식 문서에 따르면 Vuex 상태를 mutations 내에서만 변경하라고 권장합니다. 마찬가지로 컴포넌트에서 Vuex 상태를 가져올 때 직접 state에 접근하지 않고 getters를 computed에 매핑하여 사용하도록 합니다.
 
-```javascript
-// Good
-computed: {
-	boardPosts() {
-		return this.$store.state.boardPosts
+```vue
+<!-- Good -->
+<script>
+export default {
+	computed: {
+		boardPosts() {
+			return this.$store.state.boardPosts
+		}
 	}
 }
+</script>
 ```
 
-```javascript
-// Even Better
-computed: {
-	boardPosts() {
-		return this.$store.getters.boardPosts
+```vue
+<!-- Even Better -->
+<script>
+export default {
+	computed: {
+		boardPosts() {
+			return this.$store.getters.boardPosts
+		}
 	}
 }
+</script>
 ```
 
 ## 3. .vue 파일에서 컴포넌트 바인딩 헬퍼 사용하기
@@ -39,40 +47,48 @@ Vuex는 접두어 map을 넣어 컴포넌트에서 쉽게 state, mutations, acti
 **컴포넌트 안에서는 mapActions, mapGetters 2가지 헬퍼를 주로 사용합니다.**  
 **컴포넌트 단위에서 API 후처리(ex. 에러 헨들링)가 필요하지 않다면 mapActions를 사용합니다.**
 
-```javascript
-// Good
-computed: {
-	boardPosts() {
-		return this.$store.getters.boardPosts
+```vue
+<!-- Good -->
+<script>
+export default {
+	computed: {
+		boardPosts() {
+			return this.$store.getters.boardPosts
+		},
+		boardComments() {
+			return this.$store.getters.boardComments
+		},
+		filteredBoardComments() {
+			return this.$store.getters.filteredBoardComments
+		}
 	},
-	boardComments() {
-		return this.$store.getters.boardComments
-	},
-	filteredBoardComments() {
-		return this.$store.getters.filteredBoardComments
-	}
-},
-methods: {
-	fetchPosts() {
-		this.$store.dispatch.fetchPosts()
-	},
-	fetchComments() {
-		this.$store.dispatch.fetchComments()
+	methods: {
+		fetchPosts() {
+			this.$store.dispatch.fetchPosts()
+		},
+		fetchComments() {
+			this.$store.dispatch.fetchComments()
+		}
 	}
 }
+</script>
 ```
 
-```javascript
-// Even Better
+```vue
+<!-- Even Better -->
+<script>
 import { mapGetters, mapActions } from 'vuex'
 
-computed: {
-	...mapGetters([ 'boardPosts', 'boardComments', 'filteredBoardComments' ])
-},
-methods: {
-	// 후처리가 필요 없고 단독 호출할 경우 mapActions 활용 가능
-	...mapActions([ 'fetchPosts', 'fetchComments' ])
+export default {
+	computed: {
+		...mapGetters([ 'boardPosts', 'boardComments', 'filteredBoardComments' ])
+	},
+	methods: {
+		// 후처리가 필요 없고 단독 호출할 경우 mapActions 활용 가능
+		...mapActions([ 'fetchPosts', 'fetchComments' ])
+	}
 }
+</script>
 ```
 
 ## 4. 연관있는 부분 모아 모듈로 만들기
@@ -134,37 +150,41 @@ export default new Vuex.Store({
 })
 ```
 
-```javascript
-// components/BoardList.vue 중 일부
+```vue
+<!-- components/BoardList.vue 중 일부 -->
+<script>
 import { mapGetters, mapActions } from 'vuex'
 
-computed: {
-	...mapGetters(
-		'board', [ 'boardPosts', 'boardComments', 'filteredBoardComments' ]
-	),
-	...mapGetters(
-		'auth', [ 'user' ]
-	),
-},
-methods: {
-	...mapActions(
-		'board', [ 'fetchPosts', 'fetchComments' ]
-	),
-	...mapActions(
-		'auth', [ 'signIn' ]
-	)
+export default {
+	computed: {
+		...mapGetters(
+			'board', [ 'boardPosts', 'boardComments', 'filteredBoardComments' ]
+		),
+		...mapGetters(
+			'auth', [ 'user' ]
+		),
+	},
+	methods: {
+		...mapActions(
+			'board', [ 'fetchPosts', 'fetchComments' ]
+		),
+		...mapActions(
+			'auth', [ 'signIn' ]
+		)
+	}
 }
+</script>
 ```
 
 ## 5. modules 객체에 filename.store.js 모듈 자동 등록하기
 모듈 파일이 늘어나면 Vuex Store modules 객체에 import한 파일을 각각 추가하기 번거롭습니다.
 
 
-<span style="color:red;font-weight:bold">modules 폴더 안에 filename.store.js 파일을 모아 외부로 노출하는 index.js 파일을 만들고, 이 index.js 파일을 store/index.js 에서 불러 modules에 등록합니다.</span>
+><span style="color:#60fcf1;font-weight:bold">modules 폴더 안에 filename.store.js 파일을 모아 외부로 노출하는 index.js 파일을 만들고, 이 index.js 파일을 store/index.js 에서 불러 modules에 등록합니다.</span>
 
 이렇게 하면 store/index.js 파일을 수정하지 않고 모듈을 자동 등록할 수 있습니다.
 
-```javascript
+```bash
 // store 폴더 구조
 store
 │  ├─index.js

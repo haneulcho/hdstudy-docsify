@@ -16,22 +16,42 @@ Vue.js는 `<template>`과 `<script>`에 사용한 카멜 케이스와 케밥 케
 | 컴포넌트 속성 | 케밥 케이스 | `<BoardList board-id="335544325" />` |
 | props 선언 | 카멜 케이스 | `boardId: Number` |
 
-```javascript
-// Bad
-<board-list boardId="335544325" />
+```vue
+<!-- Bad -->
+<template>
+	<board-list boardId="335544325" />
+</template>
 
-props: {
-	'board-id': Number
+<script>
+import BoardList from '@/components/BoardList.vue'
+export default {
+	components: {
+		'BoardList'
+	},
+	props: {
+		'board-id': Number
+	}
 }
+</script>
 ```
 
-```javascript
-// Good
-<BoardList board-id="335544325" />
+```vue
+<!-- Good -->
+<template>
+	<BoardList board-id="335544325" />
+</template>
 
-props: {
-	boardId: Number
+<script>
+import BoardList from '@/components/BoardList.vue'
+export default {
+	components: {
+		'BoardList'
+	},
+	props: {
+		boardId: Number
+	}
 }
+</script>
 ```
 
 ## 2. props는 type, required, validator를 포함해 자세히 쓰기
@@ -39,20 +59,28 @@ props: {
 
 **단순 array 대신 type(기본), required(기본), validator(선택)를 포함해 props를 작성합니다.**
 
-```javascript
-// Bad
-props: ['boardId']
+```vue
+<!-- Bad -->
+<script>
+export default {
+	props: ['boardId']
+}
+</script>
 ```
 
-```javascript
-// Good
-props: {
-	boardId: {
-		type: Number,
-		required: true,
-		validator: (value) => value < 1000 // boardId가 1000 미만이면 유효값으로 인정
+```vue
+<!-- Good -->
+<script>
+export default {
+	props: {
+		boardId: {
+			type: Number,
+			required: true,
+			validator: (value) => value < 1000 // boardId가 1000 미만이면 유효값으로 인정
+		}
 	}
 }
+</script>
 ```
 
 ## 3. v-for와 v-if를 함께 쓰지 않기
@@ -61,85 +89,139 @@ v-for는 v-if보다 처리 우선순위가 높아 조건을 검사하기 전 모
 
 요소가 많으면 많을수록 불필요한 반복이 늘어납니다. 이를 방지하기 위해 **특정 조건을 만족하는 요소를 먼저 computed 안에서 반환한 후, 반환한 값을 v-for로 반복해야 합니다.**
 
-```javascript
-// Bad
-<ul>
-	<li
-		v-for="user in users"
-		v-if="user.isActive"
-		:key="user.id"
-	>
-		{{ user.name }}
-	</li>
-</ul>
+```vue
+<!-- Bad -->
+<template>
+	<ul>
+		<li
+			v-for="user in users"
+			v-if="user.isActive"
+			:key="user.id"
+		>
+			{{ user.name }}
+		</li>
+	</ul>
+</template>
+
+<script>
+export default {
+	data: () => ({
+		users: [
+			{ id: 1, isActive: true },
+			{ id: 2, isActive: false },
+			{ id: 3, isActive: true }
+		]
+	})
+}
+</script>
 ```
 
-```javascript
-// Good
-<ul v-if="activeUsers">
-	<li
-		v-for="user in activeUsers"
-		:key="user.id"
-	>
-		{{ user.name }}
-	</li>
-</ul>
+```vue
+<!-- Good -->
+<template>
+	<ul v-if="activeUsers">
+		<li
+			v-for="user in activeUsers"
+			:key="user.id"
+		>
+			{{ user.name }}
+		</li>
+	</ul>
+</template>
 
-computed: {
-	activeUsers() {
-		return this.users.filter((user) => user.isActive)
+<script>
+export default {
+	data: () => ({
+		users: [
+			{ id: 1, isActive: true },
+			{ id: 2, isActive: false },
+			{ id: 3, isActive: true }
+		]
+	}),
+	computed: {
+		activeUsers() {
+			return this.users.filter((user) => user.isActive)
+		}
 	}
 }
+</script>
 ```
 
 ## 4. template 안에 복잡한 수식 넣지 않기
 `<template>` 안에 수식이 필요하다면 computed 또는 methods를 사용합니다. 
 
-```javascript
-// Bad
-{{
-	fullName.split(' ').map(function (word) {
-		return word[0].toUpperCase() + word.slice(1)
-	}).join(' ')
-}}
+```vue
+<!-- Bad -->
+<template>
+	<div>
+		{{
+			fullName.split(' ').map(function (word) {
+				return word[0].toUpperCase() + word.slice(1)
+			}).join(' ')
+		}}
+	</div>
+</template>
+
+<script>
+export default {
+	data: () => ({
+		fulllName: 'Haneul Cho'
+	})
+}
+</script>
 ```
 
-```javascript
-// Good
-{{ normalizedFullName }}
+```vue
+<!-- Good -->
+<template>
+	<div>
+		{{ normalizedFullName }}
+	</div>
+</template>
 
-computed: {
-	normalizedFullName() {
-		return this.fullName.split(' ').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ')
+<script>
+export default {
+	data: () => ({
+		fulllName: 'Haneul Cho'
+	}),
+	computed: {
+		normalizedFullName() {
+			return this.fullName.split(' ').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ')
+		}
 	}
 }
+</script>
 ```
 
 ## 5. v-on은 `@`으로, v-bind는 `:`으로, v-slot은 `#`으로 쓰기
 **`<template>` 안에서 v-on, v-bind, v-slot과 @, :, #의 축약법을 혼용하지 않습니다.**  
 아예 축약을 하지 않거나 모두 축약을 하는 등 한 가지 방법을 선택해야 합니다. 엘소드 모바일 프로젝트에서는 모두 축약하여 사용합니다.
 
-```javascript
-// Bad
-<input
-	v-bind:value="age"
-	v-on:focus="handleFocused"
->
+```vue
+<!-- Bad -->
+<template>
+	<input
+		v-bind:value="age"
+		v-on:focus="handleFocused"
+	>
 
-<template v-slot:header>
-	Header content
+	<template v-slot:header>
+		Header content
+	</template>
 </template>
 ```
 
-```javascript
-// Good
-<input
-	:value="age"
-	@focus="handleFocused"
->
+```vue
+<!-- Good -->
+<template>
+	<input
+		:value="age"
+		@focus="handleFocused"
+	>
 
-<template #header>
-	Header content
+	<template #header>
+		Header content
+	</template>
 </template>
 ```
 
@@ -148,35 +230,43 @@ fetchData()라는 메서드가 있습니다. 이 메서드는 컴포넌트가 �
 
 **watch에 immediate 속성을 true로 설정합니다. 다음으로 handler() 안에서 fetchData()를 호출합니다. 이렇게 하면 created에 fetchData를 호출한 것과 동일한 결과를 얻을 수 있습니다.** watch handler()의 매개변수인 newVal, oldVal을 활용하면 특정 값의 직전 값과 갱신 값을 비교해서 처리할 수 있습니다. 얼마나 좋게요?
 
-```javascript
-// Bad
-created() {
-	this.fetchData()
-},
-watch: {
-	'$route.params': 'fetchData'
-},
-methods: {
-	fetchData() {
-		console.log('데이터 호출')
+```vue
+<!-- Bad -->
+<script>
+export default {
+	created() {
+		this.fetchData()
+	},
+	watch: {
+		'$route.params': 'fetchData'
+	},
+	methods: {
+		fetchData() {
+			console.log('데이터 호출')
+		}
 	}
 }
+</script>
 ```
 
-```javascript
-// Good
-watch: {
-	'$route.params': {
-		handler(newVal, oldVal) {
-			this.fetchData()
-		},
-		deep: true,
-		immediate: true
-	}
-},
-methods: {
-	fetchData() {
-		console.log('데이터 호출')
+```vue
+<!-- Good -->
+<script>
+export default {
+	watch: {
+		'$route.params': {
+			handler(newVal, oldVal) {
+				this.fetchData()
+			},
+			deep: true,
+			immediate: true
+		}
+	},
+	methods: {
+		fetchData() {
+			console.log('데이터 호출')
+		}
 	}
 }
+</script>
 ```
