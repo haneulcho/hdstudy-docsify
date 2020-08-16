@@ -1,7 +1,23 @@
+@font-face {
+	font-family: 'NEXON Lv1 Gothic OTF';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'NEXON Lv2 Gothic';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 :root {
 	--mono-hue: 208;
 	--mono-saturation: 20%;
 	--theme-color: #60fcf1;
+	--base-font-family: 'NEXON Lv2 Gothic', 'Noto Sans KR', sans-serif;
+	--base-letter-spacing: 0.5px;
+	--heading-font-family: 'NEXON Lv1 Gothic OTF', 'Noto Sans KR', sans-serif;
 	--modular-scale: 1.2;
 	--font-size-xxl: var(--modular-scale-5);
 	--font-size-xl: var(--modular-scale-3);

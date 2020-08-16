@@ -3,4 +3,5 @@
   - [Vue 파일 작성 가이드](/client/guide-vue)
   - [Vuex 활용 가이드](/client/guide-vuex)
   - [Router 활용 가이드](/client/guide-router)
-  - [API Response Key 재정의](/client/guide-http-response)
+  - [API Response 가이드](/client/guide-http-response)
+  - [유용한 자바스크립트](/client/guide-javascript)

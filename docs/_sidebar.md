@@ -4,6 +4,7 @@
 	* [Vuex 활용 가이드](/client/guide-vuex)
 	* [Router 활용 가이드](/client/guide-router)
 	* [API Response 가이드](/client/guide-http-response)
+	* [유용한 자바스크립트](/client/guide-javascript)
 - **Back-End**
 * [Back-End API 가이드](/server/index)
 	* [게시글 API](/server/board)
