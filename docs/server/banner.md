@@ -29,7 +29,7 @@ http://test-m.elsword.nexon.com/api/Banner/GetList
 | n4PageNo | int | Y | 조회 페이지 번호 |
 | n1PageSize | int | Y | 한 페이지에 보여줄 배너 개수 |
 | dateActiveDate | string | Y | 해당 일자 검색 기본 값(조회일을 기준으로 활성화된 배너 조회) |
-| n1OrderingType | int | Y | 배너 정렬 옵션<br>0: 기본 정렬 |
+| n1OrderingType | int | N | 배너 정렬 옵션<br>0: 기본 정렬 |
 
 ### Responses
 * **`ResultCode`**: 배너 목록 조회 정상 수행 시 0을 반환

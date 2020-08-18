@@ -31,7 +31,7 @@ http://test-m.elsword.nexon.com/api/Board/GetReCommentList
 | n4ArticleSN | int | Y | 부모 게시글 고유 번호 |
 | n4CommentPageNo | int | Y | 조회 페이지 번호 |
 | n1CommentPageSize | int | Y | 한 페이지에 보여줄 대댓글 개수 |
-| n1PageSeparate | int | Y | 한 페이지에 보여줄 대댓글 페이지 번호 개수 |
+| n1PageSeparate | int | N | 한 페이지에 보여줄 대댓글 페이지 번호 개수 |
 
 ### Responses
 * **`ResultCode`**: 대댓글 조회 정상 수행 시 0을 반환
@@ -40,97 +40,94 @@ http://test-m.elsword.nexon.com/api/Board/GetReCommentList
 
 ```json
 {
-	"ResultValue": 0,
+	"ResultCode": 0,
 	"ResultMessage": "success",
-	"ResultData": {
-		"List": [
-			{
-				"n4BoardSN": 402653189, // 게시판 고유 번호
-				"n4ArticleSN": 2, // 부모 게시글 고유 번호
-				"n4CommentSN": 3, // 대댓글 고유 번호
-				"n4ParentCommentSN": 3, // 상위 댓글 존재 시 부모 댓글 고유 번호
-				"maskGameCode": 94224, // 게임 고유 코드
-				"n8MemberSN": 167962959, // 작성자 NEXON SN
-				"strWriterID": "a9359", // 작성자 NEXON ID
-				"strWriterName": "운영자", // 작성자 캐릭터 등 ID
-				"strWriterInfo": "", // 작성자 기타 정보
-				"strCommentContent": "세번째", // 대댓글 내용
-				"dtWriteDate": "2020-07-23T17:06:16.73", // 대댓글 작성일
-				"dtModifyDate": "0001-01-01T00:00:00", // 대댓글 수정일(사용안함)
-				"strIP": null, // (사용안함)
-				"strParentWriterName": "", // (사용안함)
-				"isParent": true, // 부모 댓글 존재 여부
-				"isDeleted": false, // 삭제 대댓글 여부
-				"isReplyOfRecomment": false, // 대댓글의 대댓글 여부
-				"n4LikeNo": 0, // 추천수
-				"isLike": false // 추천 여부
-			},
-			{
-				"n4BoardSN": 402653189,
-				"n4ArticleSN": 2,
-				"n4CommentSN": 2,
-				"n4ParentCommentSN": 2,
-				"maskGameCode": 94224,
-				"n8MemberSN": 167962959,
-				"strWriterID": "a9359",
-				"strWriterName": "운영자",
-				"strWriterInfo": "",
-				"strCommentContent": "두두번째 두ㅐㅅ들",
-				"dtWriteDate": "2020-07-23T17:06:07.713",
-				"dtModifyDate": "0001-01-01T00:00:00",
-				"strIP": null,
-				"strParentWriterName": "",
-				"isParent": true,
-				"isDeleted": false,
-				"isReplyOfRecomment": false,
-				"n4LikeNo": 0,
-				"isLike": false
-			},
-			{
-				"n4BoardSN": 402653189,
-				"n4ArticleSN": 2,
-				"n4CommentSN": 1,
-				"n4ParentCommentSN": 1,
-				"maskGameCode": 94224,
-				"n8MemberSN": 167962959,
-				"strWriterID": "a9359",
-				"strWriterName": "운영자",
-				"strWriterInfo": "",
-				"strCommentContent": "댓글임",
-				"dtWriteDate": "2020-07-23T17:05:46.793",
-				"dtModifyDate": "0001-01-01T00:00:00",
-				"strIP": null,
-				"strParentWriterName": "",
-				"isParent": true,
-				"isDeleted": false,
-				"isReplyOfRecomment": false,
-				"n4LikeNo": 0,
-				"isLike": false
-			},
-			{
-				"n4BoardSN": 402653189,
-				"n4ArticleSN": 2,
-				"n4CommentSN": 4,
-				"n4ParentCommentSN": 1,
-				"maskGameCode": 94224,
-				"n8MemberSN": 167962959,
-				"strWriterID": "a9359",
-				"strWriterName": "운영자",
-				"strWriterInfo": "",
-				"strCommentContent": "첫번째댓글의 대댓글",
-				"dtWriteDate": "2020-07-23T17:06:28.2",
-				"dtModifyDate": "0001-01-01T00:00:00",
-				"strIP": null,
-				"strParentWriterName": "운영자",
-				"isParent": false,
-				"isDeleted": false,
-				"isReplyOfRecomment": false,
-				"n4LikeNo": 0,
-				"isLike": false
-			}
-		],
-		"n4ArticleSN": 2 // 부모 게시글 고유 번호
-	},
+	"ResultData": [
+		{
+			"n4BoardSN": 402653189, // 게시판 고유 번호
+			"n4ArticleSN": 2, // 부모 게시글 고유 번호
+			"n4CommentSN": 3, // 대댓글 고유 번호
+			"n4ParentCommentSN": 3, // 상위 댓글 존재 시 부모 댓글 고유 번호
+			"maskGameCode": 94224, // 게임 고유 코드
+			"n8MemberSN": 167962959, // 작성자 NEXON SN
+			"strWriterID": "a9359", // 작성자 NEXON ID
+			"strWriterName": "운영자", // 작성자 캐릭터 등 ID
+			"strWriterInfo": "", // 작성자 기타 정보
+			"strCommentContent": "세번째", // 대댓글 내용
+			"dtWriteDate": "2020-07-23T17:06:16.73", // 대댓글 작성일
+			"dtModifyDate": "0001-01-01T00:00:00", // 대댓글 수정일(사용안함)
+			"strIP": null, // (사용안함)
+			"strParentWriterName": "", // (사용안함)
+			"isParent": true, // 부모 댓글 존재 여부
+			"isDeleted": false, // 삭제 대댓글 여부
+			"isReplyOfRecomment": false, // 대댓글의 대댓글 여부
+			"n4LikeNo": 0, // 추천수
+			"isLike": false // 추천 여부
+		},
+		{
+			"n4BoardSN": 402653189,
+			"n4ArticleSN": 2,
+			"n4CommentSN": 2,
+			"n4ParentCommentSN": 2,
+			"maskGameCode": 94224,
+			"n8MemberSN": 167962959,
+			"strWriterID": "a9359",
+			"strWriterName": "운영자",
+			"strWriterInfo": "",
+			"strCommentContent": "두두번째 두ㅐㅅ들",
+			"dtWriteDate": "2020-07-23T17:06:07.713",
+			"dtModifyDate": "0001-01-01T00:00:00",
+			"strIP": null,
+			"strParentWriterName": "",
+			"isParent": true,
+			"isDeleted": false,
+			"isReplyOfRecomment": false,
+			"n4LikeNo": 0,
+			"isLike": false
+		},
+		{
+			"n4BoardSN": 402653189,
+			"n4ArticleSN": 2,
+			"n4CommentSN": 1,
+			"n4ParentCommentSN": 1,
+			"maskGameCode": 94224,
+			"n8MemberSN": 167962959,
+			"strWriterID": "a9359",
+			"strWriterName": "운영자",
+			"strWriterInfo": "",
+			"strCommentContent": "댓글임",
+			"dtWriteDate": "2020-07-23T17:05:46.793",
+			"dtModifyDate": "0001-01-01T00:00:00",
+			"strIP": null,
+			"strParentWriterName": "",
+			"isParent": true,
+			"isDeleted": false,
+			"isReplyOfRecomment": false,
+			"n4LikeNo": 0,
+			"isLike": false
+		},
+		{
+			"n4BoardSN": 402653189,
+			"n4ArticleSN": 2,
+			"n4CommentSN": 4,
+			"n4ParentCommentSN": 1,
+			"maskGameCode": 94224,
+			"n8MemberSN": 167962959,
+			"strWriterID": "a9359",
+			"strWriterName": "운영자",
+			"strWriterInfo": "",
+			"strCommentContent": "첫번째댓글의 대댓글",
+			"dtWriteDate": "2020-07-23T17:06:28.2",
+			"dtModifyDate": "0001-01-01T00:00:00",
+			"strIP": null,
+			"strParentWriterName": "운영자",
+			"isParent": false,
+			"isDeleted": false,
+			"isReplyOfRecomment": false,
+			"n4LikeNo": 0,
+			"isLike": false
+		}
+	],
 	"PrevPage": , // 
 	"isPrevPage": , // 
 	"NextPage": , // 

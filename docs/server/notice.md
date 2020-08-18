@@ -29,8 +29,8 @@ http://test-m.elsword.nexon.com/api/Board/GetList
 | n4NoticeArticleCategorySN | int | Y | 게시판 고유 번호 |
 | n4PageNo | int | Y | 조회 페이지 번호 |
 | n1PageSize | int | Y | 한 페이지에 보여줄 게시글 개수 |
-| n1PageSeparate | int | Y | 한 페이지에 보여줄 페이지 번호 개수 |
-| strSearch | string | Y | 제목으로 검색할 검색어 |
+| n1PageSeparate | int | N | 한 페이지에 보여줄 페이지 번호 개수 |
+| strSearch | string | N | 제목으로 검색할 검색어 |
 
 ### Responses
 ```json
@@ -53,24 +53,23 @@ http://test-m.elsword.nexon.com/api/Board/GetList
 		},
 		{
 			"BoardSN": 1,
-			"ArticleSN": 108101,
-			"WriteDate": "2020-07-17T18:36:54.953",
-			"EditDate": "2020-07-17T18:54:30.2",
-			"ArticleTitle": "패치노트 스타일",
-			"ArticleContent": "&nbsp;\n안녕하세요? 두리GM입니다.\n2020년 6월 25일(목) 업데이트 소식을 안내해드립니다.\n&nbsp;\n\n2020년&nbsp;6월&nbsp;25일(목)&nbsp;오전 4시 55분 ~&nbsp;오전&nbsp;10시\n10분&nbsp;(총&nbsp;5시간 10분)\n-&nbsp;넥슨 점검:&nbsp;없음\n-&nbsp;정식 서비스 서버 점검:&nbsp;오전&nbsp;4시 55분&nbsp;~&nbsp;오전&nbsp;10시 10분\n- 유리/호동 서버 점검: 오전 7시 30분 ~ 오전 11시\n&nbsp; * 유리/호동 서버 신규 서버 장비 교체 및 증설 작업을 진행합니다.\n&nbsp; * 유리/호동 서버를 제외한 다른 서버는 오전 10시 10분에 점검이 종료될 예정입니다.\n-&nbsp;테스트 서버 점검:&nbsp;오전 4시 55분\n~ 오전 7시 30분\n-&nbsp;홈페이지/캐시샵 점검: 오전 5시\n~ 오전 10시 30분\n&nbsp;\n\n배너 추후 추가 예정\n-\n7월 바람모험 이벤트\n202",
+			"ArticleSN": 107931,
+			"WriteDate": "2019-12-13T14:45:31.07",
+			"EditDate": "2019-12-13T14:45:31.07",
+			"ArticleTitle": "ddd",
+			"ArticleContent": "엘-하! 엘리오스 이벤트 요정 GM고등어입니다!\n\n11월 21일(목) ‘PROJECT FOWARD’가 오픈된 이후\n많은 모험가님들께서 이벤트에 열심히 참여하고 있으시다는 소식을 들었답니다~\n\n새로운 이벤트가 업데이트 되었는데 GM고등어가 가만히 있을 수 없죠!\n\n겨울 업데이트를 기다리며 모험가님들의 캐릭터들이 더욱 수월한 던전 플레이를 통해 성장할 수 있도록\n엘소드가 준비한 이벤트 내용과 반드시 확인해야할 꿀팁을 모아 왔으니 바로 확인해주세요.\n\n*아래 이미지를 클릭 시 이벤트 페이지로 이동됩니다. \n&nbsp;\n\n지금까지 GM고등어였습니다. \n감사합니다.",
 			"ServiceNameList": null,
-			"WriteUserName": "",
+			"WriteUserName": "뉴니뉴니22",
 			"NoticeCode": 1,
-			"NoticeCodeName": "[공지]",
-			"ReadCount": 9
+			"NoticeCodeName": "[패치]",
+			"ReadCount": 2
 		}
 	],
-	"PrevPage": , // 
-	"isPrevPage": , // 
-	"NextPage": , // 
-	"isNextPage": , // 
-	"TotalRowCount": 45620, // 페이징 처리를 위한 게시글 데이터 총 개수
-	"TotalPageCount":  //
+	"isPrevPage": false, //
+	"NextPage": 11, //
+	"isNextPage": true, //
+	"TotalRowCount": 3453, // 페이징 처리를 위한 게시글 데이터 총 개수
+	"TotalPageCount": 346 //
 }
 ```
 
@@ -94,9 +93,9 @@ http://test-m.elsword.nexon.com/api/Notice/GetInfo
 | 속성 | 타입 | 필수여부 | 설명 |
 | ---- | :----: | :----: | ---- |
 | n4NoticeArticleSN | int | Y | 게시글 고유 번호 |
-| isUpdateReadCount | bool | Y | 조회 시 조회수 증감 구분 |
+| isUpdateReadCount | bool | N | 조회 시 조회수 증감 구분 |
 | dtWriteDate | string | Y | 게시글 작성일(이전, 다음 게시글 추출에 사용) |
-| noticeArticleCategorySN | int | Y | 카테고리 번호 |
+| noticeArticleCategorySN | int | N | 카테고리 번호 |
 | strTitleSearch | string | N | 제목으로 검색할 검색어 |
 
 ### Responses

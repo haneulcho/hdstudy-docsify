@@ -40,13 +40,13 @@ http://test-m.elsword.nexon.com/api/Board/GetList
 | n4BoardSN | int | Y | 게시판 고유 번호 |
 | n4PageNo | int | Y | 조회 페이지 번호 |
 | n1PageSize | int | Y | 한 페이지에 보여줄 게시글 개수 |
-| n1PageSeparate | int | Y | 한 페이지에 보여줄 페이지 번호 개수 |
-| SearchType | string | Y | 검색 기준<br>title: 제목으로 검색<br>writer: 작성자로 검색 |
-| strSearchText | string | Y | 검색어 |
-| n4ArticleCategorySN | int | Y | 카테고리 번호 |
-| n4ArticleSubCategorySN | int | Y | 서브 카테고리 번호 |
-| n4ArticleCategory2SN | int | Y | 2차 카테고리 번호 |
-| n1codeOrderingType | int | Y | 게시글 정렬 옵션<br>0: 기본 정렬<br>1: 날짜 내림차순<br>2: 날짜 오름차순<br>3: 내림차순<br>4: 오름차순 |
+| n1PageSeparate | int | N | 한 페이지에 보여줄 페이지 번호 개수 |
+| SearchType | string | N | 검색 기준<br>title: 제목으로 검색<br>writer: 작성자로 검색 |
+| strSearchText | string | N | 검색어 |
+| n4ArticleCategorySN | int | N | 카테고리 번호 |
+| n4ArticleSubCategorySN | int | N | 서브 카테고리 번호 |
+| n4ArticleCategory2SN | int | N | 2차 카테고리 번호 |
+| n1codeOrderingType | int | N | 게시글 정렬 옵션<br>0: 기본 정렬<br>1: 날짜 내림차순<br>2: 날짜 오름차순<br>3: 내림차순<br>4: 오름차순 |
 
 ### Responses
 maskArticleProperty는 리스트의 Article 요소에 대한 대표 속성입니다.  
@@ -59,56 +59,54 @@ maskArticleProperty는 리스트의 Article 요소에 대한 대표 속성입니
 {
 	"ResultCode": 0,
 	"ResultMessage": "success",
-	"ResultData": {
-		"List": [
-			{
-				"maskArticleProperty": {
-					"isNotice": false, // 공지 여부
-					"isAnswered": false, // 응답 여부(사용안함)
-					"isBestAward": false, // 베스트글 여부
-					"isPunished": false, // 재제 여부
-					"isAcceptedByAdmin": false, // 관리 관련(사용안함)
-					"isCompletedByAdmin": false, // 관리 관련(사용안함)
-					"isRequiredCheckByAdmin": false, // 관리 관련(사용안함)
-					"isConfirmBySuperAdmin": false, // 관리 관련(사용안함)
-					"isDisableComment": false, // 댓글 활성화 여부
-					"isViewInMainPage": false, // 메인 페이지 노출 여부
-					"isHidden": false, // 숨김글 여부
-					"isNotComment": true // 댓글 작성 가능 여부
-				},
-				"n4BoardSN": 335544325, // 게시판 고유 번호
-				"n4ArticleSN": 16, // 게시글 고유 번호
-				"dtWriteDate": "2017-03-13T17:56:57.663", // 게시글 작성일
-				"n4ArticleCategorySN": 0, // 카테고리 번호
-				"strArticleCategoryName": "", // 카테고리명
-				"n4ArticleSubCategorySN": 0, // 서브 카테고리 번호
-				"strArticleSubCategoryName": "", // 서브 카테고리명
-				"n4ArticleCategory2SN": 0, // 2차 카테고리 번호
-				"strArticleCategory2Name": "", // 2차 카테고리명
-				"maskGameCode": 94224, // 게임 고유 코드
-				"n4WriterSN": 1963442407, // 작성자 NEXON SN
-				"strWriterID": "nxpt31", // 작성자 NEXON ID
-				"strWriterName": "1", // 작성자 캐릭터 등 ID
-				"strWriterInfo": "", // 작성자 기타 정보
-				"n2WriterLevel": 0, // 작성자 캐릭터 레벨
-				"n4WriterExp": 0, // 작성자 경험치
-				"n8ThumbnailFileSN": 0, // 게시글 이미지 포함 시 썸네일 생성 번호
-				"strArticleTitle": "엘소드 통계 테스트14", // 게시글 제목
-				"strArticleSomeContent": "", // 게시글 내용 요약
-				"strArticleContent": null, // 게시글 본문
-				"n4ReadCount": 7, // 조회수
-				"n4CommentCount": 0, // 댓글수
-				"n4CommentCount2": 0, // 댓글수2
-				"n4PositiveRecommendCount": 0, // 추천수
-				"n4NegativeRecommendCount": 0, // 비추천수
-				"n4PositiveRecommendPoint": 0, // 추천 포인트
-				"n4NegativeRecommendPoint": 0, // 비추천 포인트
-				"strDelegatedData": "", // 게시글 작성 시 구분자(|)로 구분되는 임시 데이터
+	"ResultData": [
+		{
+			"maskArticleProperty": {
 				"isNotice": false, // 공지 여부
+				"isAnswered": false, // 응답 여부(사용안함)
+				"isBestAward": false, // 베스트글 여부
+				"isPunished": false, // 재제 여부
+				"isAcceptedByAdmin": false, // 관리 관련(사용안함)
+				"isCompletedByAdmin": false, // 관리 관련(사용안함)
+				"isRequiredCheckByAdmin": false, // 관리 관련(사용안함)
+				"isConfirmBySuperAdmin": false, // 관리 관련(사용안함)
+				"isDisableComment": false, // 댓글 활성화 여부
+				"isViewInMainPage": false, // 메인 페이지 노출 여부
+				"isHidden": false, // 숨김글 여부
 				"isNotComment": true // 댓글 작성 가능 여부
-			}
-		]
-	},
+			},
+			"n4BoardSN": 335544325, // 게시판 고유 번호
+			"n4ArticleSN": 16, // 게시글 고유 번호
+			"dtWriteDate": "2017-03-13T17:56:57.663", // 게시글 작성일
+			"n4ArticleCategorySN": 0, // 카테고리 번호
+			"strArticleCategoryName": "", // 카테고리명
+			"n4ArticleSubCategorySN": 0, // 서브 카테고리 번호
+			"strArticleSubCategoryName": "", // 서브 카테고리명
+			"n4ArticleCategory2SN": 0, // 2차 카테고리 번호
+			"strArticleCategory2Name": "", // 2차 카테고리명
+			"maskGameCode": 94224, // 게임 고유 코드
+			"n4WriterSN": 1963442407, // 작성자 NEXON SN
+			"strWriterID": "nxpt31", // 작성자 NEXON ID
+			"strWriterName": "1", // 작성자 캐릭터 등 ID
+			"strWriterInfo": "", // 작성자 기타 정보
+			"n2WriterLevel": 0, // 작성자 캐릭터 레벨
+			"n4WriterExp": 0, // 작성자 경험치
+			"n8ThumbnailFileSN": 0, // 게시글 이미지 포함 시 썸네일 생성 번호
+			"strArticleTitle": "엘소드 통계 테스트14", // 게시글 제목
+			"strArticleSomeContent": "", // 게시글 내용 요약
+			"strArticleContent": null, // 게시글 본문
+			"n4ReadCount": 7, // 조회수
+			"n4CommentCount": 0, // 댓글수
+			"n4CommentCount2": 0, // 댓글수2
+			"n4PositiveRecommendCount": 0, // 추천수
+			"n4NegativeRecommendCount": 0, // 비추천수
+			"n4PositiveRecommendPoint": 0, // 추천 포인트
+			"n4NegativeRecommendPoint": 0, // 비추천 포인트
+			"strDelegatedData": "", // 게시글 작성 시 구분자(|)로 구분되는 임시 데이터
+			"isNotice": false, // 공지 여부
+			"isNotComment": true // 댓글 작성 가능 여부
+		}
+	],
 	"PrevPage": , // 
 	"isPrevPage": , // 
 	"NextPage": , // 
@@ -144,9 +142,9 @@ http://test-m.elsword.nexon.com/api/Board/GetInfo
 | ---- | :----: | :----: | ---- |
 | n4BoardSN | int | Y | 게시판 고유 번호 |
 | n4ArticleSN | int | Y | 게시글 고유 번호 |
-| isWantIncReadCount | bool | Y | 조회 시 조회수 증감 구분 |
-| isWantArticleContent | bool | Y | 조회 시 본문 취득 구분 |
-| SearchType | string | Y | 검색 기준<br>title: 제목으로 검색<br>writer: 작성자로 검색 |
+| isWantIncReadCount | bool | N | 조회 시 조회수 증감 구분 |
+| isWantArticleContent | bool | N | 조회 시 본문 취득 구분 |
+| SearchType | string | N | 검색 기준<br>title: 제목으로 검색<br>writer: 작성자로 검색 |
 | strSearchText | string | N | 검색어 |
 | isCustomOrdering | bool | N | - |
 | n4ArticleCategorySN | int | N | 카테고리 번호 |
@@ -335,15 +333,15 @@ http://test-m.elsword.nexon.com/api/Board/WriteArticle
 | 속성 | 타입 | 필수여부 | 설명 |
 | ---- | :----: | :----: | ---- |
 | n4BoardSN | int | Y | 게시판 고유 번호 |
-| n4ArticleSN | int | Y | 게시글 고유 번호 |
+| n4ArticleSN | int | N | 게시글 고유 번호 |
 | strArticleTitle | string | Y | 게시글 제목 |
 | strArticleContent | string | Y | 게시글 내용 |
 | n4ArticleCategorySN | int | N | 카테고리 번호 |
 | n4ArticleSubCategorySN | int | N | 서브 카테고리 번호 |
 | n4ArticleCategory2SN | int | N | 2차 카테고리 번호 |
-| strDelegatedData | string | Y | 구분자`(|)`로 구분되는 임시 데이터 |
-| IsMustAttachImage | bool | Y | 이미지 포함여부 |
-| isUseDelegatedData | bool | Y | 임시 데이터 포함 여부 |
+| strDelegatedData | string | N | 구분자`(|)`로 구분되는 임시 데이터 |
+| IsMustAttachImage | bool | N | 이미지 포함여부 |
+| isUseDelegatedData | bool | N | 임시 데이터 포함 여부 |
 | ThumbnailFile | object | N | 썸네일 파일 정보 Model |
 | arrEditorFileList | array | N | 에디터 썸네일 파일 정보 Model |
 

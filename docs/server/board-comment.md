@@ -31,7 +31,7 @@ http://test-m.elsword.nexon.com/api/Board/GetCommentList
 | n4ArticleSN | int | Y | 부모 게시글 고유 번호 |
 | n4CommentPageNo | int | Y | 조회 페이지 번호 |
 | n1CommentPageSize | int | Y | 한 페이지에 보여줄 댓글 개수 |
-| n1PageSeparate | int | Y | 한 페이지에 보여줄 댓글 페이지 번호 개수 |
+| n1PageSeparate | int | N | 한 페이지에 보여줄 댓글 페이지 번호 개수 |
 
 ### Responses
 * **`ResultCode`**: 댓글 조회 정상 수행 시 0을 반환
@@ -40,49 +40,46 @@ http://test-m.elsword.nexon.com/api/Board/GetCommentList
 
 ```json
 {
-	"ResultValue": 0,
+	"ResultCode": 0,
 	"ResultMessage": "success",
-	"ResultData": {
-		"List": [
-			{
-				"n4BoardSN": 335544325, // 게시판 고유 번호
-				"n4ArticleSN": 26, // 부모 게시글 고유 번호
-				"n4CommentSN": 3, // 댓글 고유 번호
-				"maskGameCode": 94224, // 게임 고유 코드
-				"n4WriterSN": 167962959, // 작성자 NEXON SN
-				"strWriterID": "a9359", // 작성자 NEXON ID
-				"strWriterName": "1", // 작성자 캐릭터 등 ID
-				"strWriterInfo": "", // 작성자 기타 정보
-				"strCommentContent": "지쟈스", // 댓글 내용
-				"dtWriteDate": "2020-07-23T15:09:09.56" // 댓글 작성일
-			},
-			{
-				"n4BoardSN": 335544325,
-				"n4ArticleSN": 26,
-				"n4CommentSN": 2,
-				"maskGameCode": 94224,
-				"n4WriterSN": 167962959,
-				"strWriterID": "a9359",
-				"strWriterName": "1",
-				"strWriterInfo": "",
-				"strCommentContent": "시져스",
-				"dtWriteDate": "2020-07-23T15:09:05.397"
-			},
-			{
-				"n4BoardSN": 335544325,
-				"n4ArticleSN": 26,
-				"n4CommentSN": 1,
-				"maskGameCode": 94224,
-				"n4WriterSN": 167962959,
-				"strWriterID": "a9359",
-				"strWriterName": "1",
-				"strWriterInfo": "",
-				"strCommentContent": "고저스",
-				"dtWriteDate": "2020-07-23T15:09:00.597"
-			}
-		],
-		"n4ArticleSN": 26 // 부모 게시글 고유 번호
-	},
+	"ResultData": [
+		{
+			"n4BoardSN": 335544325, // 게시판 고유 번호
+			"n4ArticleSN": 26, // 부모 게시글 고유 번호
+			"n4CommentSN": 3, // 댓글 고유 번호
+			"maskGameCode": 94224, // 게임 고유 코드
+			"n4WriterSN": 167962959, // 작성자 NEXON SN
+			"strWriterID": "a9359", // 작성자 NEXON ID
+			"strWriterName": "1", // 작성자 캐릭터 등 ID
+			"strWriterInfo": "", // 작성자 기타 정보
+			"strCommentContent": "지쟈스", // 댓글 내용
+			"dtWriteDate": "2020-07-23T15:09:09.56" // 댓글 작성일
+		},
+		{
+			"n4BoardSN": 335544325,
+			"n4ArticleSN": 26,
+			"n4CommentSN": 2,
+			"maskGameCode": 94224,
+			"n4WriterSN": 167962959,
+			"strWriterID": "a9359",
+			"strWriterName": "1",
+			"strWriterInfo": "",
+			"strCommentContent": "시져스",
+			"dtWriteDate": "2020-07-23T15:09:05.397"
+		},
+		{
+			"n4BoardSN": 335544325,
+			"n4ArticleSN": 26,
+			"n4CommentSN": 1,
+			"maskGameCode": 94224,
+			"n4WriterSN": 167962959,
+			"strWriterID": "a9359",
+			"strWriterName": "1",
+			"strWriterInfo": "",
+			"strCommentContent": "고저스",
+			"dtWriteDate": "2020-07-23T15:09:00.597"
+		}
+	],
 	"PrevPage": , // 
 	"isPrevPage": , // 
 	"NextPage": , // 

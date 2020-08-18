@@ -13,6 +13,8 @@ GitLab 위키에 적힌 가이드 내용을 재구성한 페이지입니다.
   - [Banner - 배너 API](/server/banner)
 - POLL API
   - [Poll - 설문조사 게시글 API](/server/poll)
+- ETC API
+  - [Multimedia - 멀티미디어 게시글 API](/server/multimedia)
 
 ----
 

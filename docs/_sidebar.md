@@ -14,4 +14,5 @@
 	* [공지사항 게시글 API](/server/notice)
 	* [배너 API](/server/banner)
 	* [설문조사 게시글 API](/server/poll)
+	* [멀티미디어 게시글 API](/server/multimedia)
 	* [API 관련 상수 정의](/server/const)

@@ -35,7 +35,7 @@ http://test-m.elsword.nexon.com/api/Poll/GetList
 | n4BoardSN | int | Y | 게시판 고유 번호 |
 | n4PageNo | int | Y | 조회 페이지 번호 |
 | n1PageSize | int | Y | 한 페이지에 보여줄 게시글 개수 |
-| n1PageSeparate | int | Y | 한 페이지에 보여줄 페이지 번호 개수 |
+| n1PageSeparate | int | N | 한 페이지에 보여줄 페이지 번호 개수 |
 
 ### Responses
 ```json
@@ -336,7 +336,7 @@ http://test-m.elsword.nexon.com/api/Poll/GetQuestionList
 ### Responses
 ><span style="color:red;font-weight:bold">Response 내용 확인 중입니다.</span>
 
-* **`ResultValue`**: 특정 설문 질문 조회 정상 수행 시 0을 반환
+* **`ResultCode`**: 특정 설문 질문 조회 정상 수행 시 0을 반환
 
 ```json
 {
